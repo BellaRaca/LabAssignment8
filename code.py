@@ -1,5 +1,6 @@
 import pandas as pd
 import matplotlib.pyplot as plt
+import seaborn as sns
 
 baggage_complaints_data = pd.read_csv('baggagecomplaints.csv')
 # Figure 1, Scatter plot of baggage complaints and enplaned passengers
@@ -19,5 +20,15 @@ plt.plot(baggage_complaints_data_sorted['Date'], baggage_complaints_data_sorted[
 plt.title('Trend of Baggage Complaints Over Time')
 plt.xlabel('Date')
 plt.ylabel('Baggage Complaints')
+plt.grid(True)
+plt.show()
+
+# Figure 3, average baggage complaints per month
+monthly_complaints = baggage_complaints_data.groupby('Month')['Baggage'].mean().reset_index()
+plt.figure(figsize=(12, 7))
+sns.barplot(x='Month', y='Baggage', data=monthly_complaints)
+plt.title('Average Baggage Complaints Per Month')
+plt.xlabel('Month')
+plt.ylabel('Average Baggage Complaints')
 plt.grid(True)
 plt.show()
