@@ -32,3 +32,18 @@ plt.xlabel('Month')
 plt.ylabel('Average Baggage Complaints')
 plt.grid(True)
 plt.show()
+
+
+# Figure 4, plot for total baggage complaints per airline over time
+baggage_complaints_data['Date'] = pd.to_datetime(baggage_complaints_data['Date'], format='%m/%Y')
+complaints_over_time = baggage_complaints_data.pivot_table(index='Date', columns='Airline', values='Baggage', aggfunc='sum')
+plt.figure(figsize=(14, 8))
+sns.lineplot(data=complaints_over_time)
+plt.title('Total Baggage Complaints Per Airline Over Time')
+plt.xlabel('Date')
+plt.ylabel('Total Baggage Complaints')
+plt.legend(title='Airline', bbox_to_anchor=(1.05, 1), loc='upper left')
+plt.xticks(rotation=45)
+plt.grid(True)
+plt.tight_layout()
+plt.show()
