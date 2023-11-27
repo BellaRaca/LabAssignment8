@@ -2,6 +2,8 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 
+# @author bellarao. Dataset: https://www.kaggle.com/datasets/gabrielsantello/airline-baggage-complaints-time-series-dataset
+
 baggage_complaints_data = pd.read_csv('baggagecomplaints.csv')
 # Figure 1, Scatter plot of baggage complaints and enplaned passengers
 plt.figure(figsize=(10, 6))
